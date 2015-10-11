@@ -74,9 +74,9 @@ int main(int argc, char *argv[])
         newvals[ic+i-1] = idx;
     }
 
-    // for (int i=0; i<argc+4; i++) {
-    //     std::cout << newvals[i] << std::endl;
-    // } 
+    //for (int i=0; i<argc+4; i++) {
+    //    std::cout << newvals[i] << std::endl;
+    //} 
 
     return jl_main(argc+4, newvals);
 }
