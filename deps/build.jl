@@ -20,9 +20,9 @@ end
 JL_INSTALL_DIR = dir
 
 @show JL_INSTALL_DIR
-const incdir_uv = readall(`find $JL_INSTALL_DIR -name "uv.h"`)|>split|>first|>dirname
-const incdir_julia = readall(`find $JL_INSTALL_DIR -name "julia.h"`)|>split|>first|>dirname
-const incdir_support = readall(`find $JL_INSTALL_DIR -name "libsupport.h"`)|>split|>first|>dirname
+const incdir_uv = readstring(`find $JL_INSTALL_DIR -name "uv.h"`)|>split|>first|>dirname
+const incdir_julia = readstring(`find $JL_INSTALL_DIR -name "julia.h"`)|>split|>first|>dirname
+const incdir_support = readstring(`find $JL_INSTALL_DIR -name "libsupport.h"`)|>split|>first|>dirname
 const libdir_julia = dirname(LIBJULIA)
 
 @show incdir_uv
@@ -76,7 +76,7 @@ end
 #go to $JULIA_PACKAGES/ROOT
 cd(joinpath(dirname(Base.source_path()), ".."))
 haskey(ENV, "ROOTSYS") || install_root()
-const ROOTPATH = readall(`which root-config`)|>split|>first|>dirname
+const ROOTPATH = readstring(`which root-config`)|>split|>first|>dirname
 @show ROOTPATH
 
 println("Compiling support libs")

@@ -12,7 +12,7 @@ end
     error("ROOTSYS not defined, call `source /path/to/root/thisroot.sh`")
 
 #check for correct root version (root 6)
-const rootversion = readall(`root-config --version`) |> strip
+const rootversion = readstring(`root-config --version`) |> strip
 startswith(rootversion, "6") || error("Need ROOT 6 or greater, but found $rootversion")
     
 @linux_only const LIBROOT = string(dirname(Base.source_path()), "/../libroot.so")
